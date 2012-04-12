@@ -1,0 +1,19 @@
+span.arrow
+.audio-drawer
+#twitterwrap
+  #contentwrap
+    p I made a Chrome extension that hides promoted ads on twitter.com*
+    p If I did my job right, you'll never notice it.
+    a.download(href="http://x.elihorne.com/chrome/nopromo/nopromo.crx")
+      span Add to Chrome
+    p.irony *Yes, I get the irony that my paycheck comes from ads
+
+script(type="text/javascript")
+  audioSetup();
+  function chromeArrow() {
+    jQuery('.arrow').fadeIn();
+  };
+  jQuery('.download').live('click', function(){
+    chromeArrow();
+    randomFart();
+  });

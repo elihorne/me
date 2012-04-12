@@ -1,0 +1,19 @@
+{
+  "name": "elihorne-com",
+  "subdomain": "elihorne.com",
+  "domains": [
+    "elihorne.com"
+  ],
+  "scripts": {
+    "start": "app.js"
+  },
+  "version": "0.0.2-12",
+  "engines": {
+    "node": "0.6.x"
+  },
+  "dependencies": {
+    "express": "2.5.8",
+    "less": ">= 0.0.1",
+    "jade": ">= 0.0.1"
+  }
+}

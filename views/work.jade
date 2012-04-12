@@ -1,0 +1,206 @@
+style
+  #container{
+    overflow:hidden;
+    width:100%;
+    height:100%;
+  }
+
+  #control{
+    position:fixed;
+    left:0;
+    top:15%;
+    background:rgba(0,0,0,0.75);
+    padding:15px;
+    z-index:500;
+  }
+
+  #control a{
+    color:#fff;
+    display:block;
+    text-decoration:none;
+  }
+
+  .panels{
+    position:relative;
+    width:100%;
+  }
+
+  .panelwrap{
+    width:600%;
+    position:relative; 
+    //- replace with #of children
+  }
+
+  .panel{
+    position:relative;
+  }
+
+  .sub{
+    float:left;
+    background:#911;
+  }
+
+  .arrows{
+    position:absolute;
+    left:50%;
+    top:50%;
+    width: 201px;
+    height:100px;
+    margin-top:-100px;
+    margin-left:-50px;
+    overflow:hidden;
+  }
+
+  .arrows a{
+    color:#fff;
+    text-align:center;
+    line-height:100px;
+  }
+
+  .arrows a:hover{
+    opacity:0.5;
+  }
+
+  .left{
+    float:left;
+    width:100px;
+    height:100px;
+    background:rgba(0,0,0,0.75);
+    border-right:1px solid #fff;
+  }
+
+  .right{
+    float:left;
+    width:100px;
+    height:100px;
+    background:rgba(0,0,0,0.75);
+  }
+
+  #ux{
+    background-color:#1ad;
+  }
+
+  #ui{
+    background-color:#3be;
+  }
+
+  #code{
+    background-color:#9cf;
+  }
+
+
+#container
+  #control
+    a(href="ux") UX
+    a(href="ui") UI
+    a(href="code") CODE
+  .panels
+    .panelwrap#ux
+      .panel.sub
+        .arrows
+          a.left left
+          a.right right
+      .panel.sub
+        .arrows
+          a.left left
+          a.right right
+      .panel.sub
+        .arrows
+          a.left left
+          a.right right
+      .panel.sub
+        .arrows
+          a.left left
+          a.right right
+    .panelwrap#ui 
+      h1 panel
+      p paragraph
+
+    .panelwrap#code
+      h1 panel
+      p paragraph
+
+script
+  function go(target) {
+    if(target == 'home') {
+      $('#control a:first-child').addClass('active');
+    } else {
+      $('#control a[href="'+target+'"]').addClass('active');
+    }
+  }
+
+  function history() {
+    dir = '/work';
+    path = window.location.pathname;
+    path = path.split(dir);
+    if(path.length > 0) {
+      target = path[1].replace('/', '')
+      alert('more to the path! ' + path.length);
+      go(target)
+    } else {
+      target = 'home';
+      go('home');
+    }
+
+    //alert('path = ' + path);
+  }
+  function panelSize() {
+    w = $(window).width();
+    h = $(window).height();
+    console.log('w = ' + w + ' h = ' + h);
+    $('.panelwrap').css({
+      'height' : h
+    })
+    $('.panel').css({
+      'width' : w,
+      'height' : h
+    })
+  };
+
+  function scroll(p, d) {
+    if(d == 'v') {
+      p = '#' + p;
+      o = $(p).position();
+      console.log(p + ' is ' + o.top + 'px from the top');
+      $('.panels').animate({
+        'top' : '-' + o.top
+      }, 300)
+    }
+    if(d == 'h') {
+
+      o = p.position();
+      $('.panelwrap').animate({
+        'left' : '-' + o.left
+      }, 300)
+    }
+  }
+
+  function nav() {
+    $('#control a').live('click', function(){
+      event.preventDefault();
+      p = $(this).attr('href');
+      scroll(p, 'v');
+    });
+
+    $('.arrows a').live('click', function(){
+      event.preventDefault();
+      if($(this).attr('class') == 'left') {
+        p = $('.sub').eq('0');
+      } else {
+        p = $('.sub').eq('1')
+      }
+      scroll(p, 'h')
+    });
+  }
+
+  $(window).resize(function(){
+      panelSize();
+  })
+
+  function init() {
+    history();
+    panelSize();
+    nav();
+  }
+
+  init();
