@@ -121,6 +121,7 @@ style
       p paragraph
 
 script
+  // control history and state changes
   function go(target) {
     if(target == 'home') {
       $('#control a:first-child').addClass('active');
@@ -129,25 +130,31 @@ script
     }
   }
 
+  // if the url already has a destination
   function history() {
-    dir = '/work';
-    path = window.location.pathname;
-    path = path.split(dir);
-    if(path.length > 0) {
-      target = path[1].replace('/', '')
-      alert('more to the path! ' + path.length);
-      go(target)
-    } else {
-      target = 'home';
-      go('home');
-    }
+    kBasePath = '/work';
+    url = window.location.pathname;
+    //path = path.split(dir);
+    //if(path.length > 1) {
+      //target = path.split(, '')
+      //alert('more to the path! ' + path.length);
+      //go(target)
+    //} else {
+      //target = 'home';
+      //go('home');
+    //}
 
+    if(url.length >= kBasePath.length && url.substr(0, kBasePath.length) == kBasePath) { 
+        url = url.substr(kBasePath.length);
+        //alert('url = ' + url);
+      } else { alert('404'); }
     //alert('path = ' + path);
   }
+
+  // make panels full screen
   function panelSize() {
     w = $(window).width();
     h = $(window).height();
-    console.log('w = ' + w + ' h = ' + h);
     $('.panelwrap').css({
       'height' : h
     })
@@ -157,6 +164,7 @@ script
     })
   };
 
+  // handle scroll events
   function scroll(p, d) {
     if(d == 'v') {
       p = '#' + p;
@@ -175,6 +183,7 @@ script
     }
   }
 
+  // GUI controller (non keyboard)
   function nav() {
     $('#control a').live('click', function(){
       event.preventDefault();
@@ -193,14 +202,36 @@ script
     });
   }
 
-  $(window).resize(function(){
-      panelSize();
-  })
+  // if the window resizes, update full screen panels
+  function resizer() {
+    $(window).resize(function(){
+        panelSize();
+    })
+  }
 
+  function keys() {
+    $(document).keyup(function(event) {
+      switch(event.which) {
+        case 38: alert('up');
+        break;
+        case 40: alert('down');
+        break;
+        case 39: alert('right');
+        break;
+        case 37: alert('left');
+        break;
+      }
+    });   
+  }
+
+  // ready, set...
   function init() {
     history();
     panelSize();
+    resizer();
+    keys();
     nav();
   }
 
+  // go!
   init();
