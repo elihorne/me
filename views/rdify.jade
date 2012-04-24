@@ -1,0 +1,54 @@
+
+link(href='http://fonts.googleapis.com/css?family=Droid+Serif:700',rel='stylesheet',type='text/css')
+
+span.arrow
+.audio-drawer
+
+
+.step#step1
+  p I use <span class="rdio">Rdio</span> and got tired of seeing dead end <span class="grey">http://</span>open.<span class="spotify">spotify</span> links
+.step#step2
+  p ...So I made a Chrome extension that searches <span class="rdio">Rdio</span> for the track or album in a <span class="spotify">Spotify</span> link
+.step#step3
+  p ...and takes you <span class="rdio">there</span>.
+.step#step4
+  a.rd-download(href="http://x.elihorne.com/chrome/rdify/rdify.crx")
+    span Download the Chrome extension
+
+#done.step
+  p Done? Good. Now try this link: <a class="spotify" href="http://open.spotify.com/album/3hVR63Y2ElBoxmzThy80nG">open.spotify.com/...</a>
+
+
+script(type="text/javascript")
+  jQuery('.step:eq(0)').fadeIn('slow').addClass('active');
+
+  function nextSlide() {
+    if(jQuery('#step4').is(':visible')) {
+      clearInterval(nextSlideInterval);
+    } else {
+      jQuery('.step:visible').fadeOut('slow', function(){
+        jQuery(this).next().fadeIn('slow');
+
+      });   
+    }
+  }
+
+  nextSlideInterval = setInterval(nextSlide, 5000);
+
+  function lastStep() {
+    jQuery('.arrow').fadeOut('slow');
+    jQuery('.step:visible').fadeOut('slow', function(){
+      clearInterval(nextSlideInterval);
+      jQuery('#done').fadeIn('slow');
+    });
+  };
+
+  audioSetup();
+  function chromeArrow() {
+    jQuery('.arrow').fadeIn();
+  };
+  jQuery('.rd-download').live('click', function(){
+    chromeArrow();
+    randomFart();
+    setTimeout(lastStep, 1000);
+  });

@@ -15,6 +15,7 @@ var app = module.exports = express.createServer();
 app.configure(function(){
   app.set('views', __dirname + '/views');
   app.set('view engine', 'jade');
+  app.set('view options', { pretty: true });
   app.use(express.bodyParser());
   app.use(express.methodOverride());
   app.use(express.compiler({ src: __dirname + '/public', enable: ['less'] }));
@@ -33,11 +34,18 @@ app.configure('production', function(){
 // Routes
 
 app.get('/', routes.index);
-app.get('/nopromo', function(req, res){
+app.get('/nopromo*', function(req, res){
 	res.render('nopromo.jade', {
-		title : 'No Promo'
+		title : 'No Promo | Eli Horne'
 	});
 });
+
+app.get('/rdify*', function(req, res){
+  res.render('rdify.jade', {
+    title : 'Rdify | Eli Horne'
+  });
+});
+
 app.get('/work*', function(req, res){
   res.render('work.jade', {
     title : 'Work | Eli Horne'
