@@ -454,3 +454,63 @@ footer,
   display: none;
   opacity: 0.25;
 }
+a.rd-download {
+  background: url(/images/chrome/rdify-button.png) left top no-repeat;
+  width: 400px;
+  height: 405px;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  margin-left: -200px;
+  margin-top: -202px;
+  text-decoration: none;
+  -webkit-transition: all .01s linear;
+}
+.rd-download:hover span {
+  opacity: 1;
+}
+.rd-download span {
+  color: #fff;
+  font-weight: bold;
+  background: rgba(0, 0, 0, 0.5);
+  padding: 10px;
+  margin: 0 35px;
+  display: block;
+  border-radius: 8px;
+  margin-top: 149px;
+  text-align: center;
+  opacity: 0;
+  -webkit-transition: opacity .25s linear;
+}
+.rd-download:active {
+  top: 51%;
+}
+.step {
+  font-family: 'Droid Serif';
+  display: none;
+  width: 580px;
+  height: 400px;
+  position: absolute;
+  top: 50%;
+  font-size: 30px;
+  left: 50%;
+  margin-left: -290px;
+  margin-top: -200px;
+  line-height: 40px;
+}
+.step p {
+  margin-top: 140px;
+  margin-left: 50px;
+}
+.hide {
+  display: none;
+}
+.rdio {
+  color: #1a6fea;
+}
+.grey {
+  color: #aaa;
+}
+.spotify {
+  color: #7ab800;
+}

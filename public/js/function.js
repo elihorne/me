@@ -463,9 +463,8 @@ init = function(){
         }
     
     });
-    
-	
-	
+
+
     $('#about-content h1 a').live('click', function() {
 		randomFart();
         sayHello();
