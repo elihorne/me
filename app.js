@@ -6,7 +6,7 @@
 var express = require('express')
   , routes = require('./routes');
   
-  var less = require('less');
+var less = require('less');
 
 var app = module.exports = express.createServer();
 
