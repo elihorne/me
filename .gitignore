@@ -1,0 +1,9 @@
+# node stuff
+node_modules/**/*
+npm-debug.log
+
+# dropbox
+.dropbox
+
+# mac
+.DS_Store

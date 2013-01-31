@@ -1,32 +1,18 @@
-!!! 5
+!!!5
 html(lang="en", dir="ltr")
 	head
 		title= title
-		// heroku
+		
+		// powered by node, heroku and coffee
+		
 		meta(name="description", content="I live in New York and work as a UX designer. I'm also a nerd. This is my website")
+
 		link(rel="shortcut icon", href="/images/favicon.ico")
 		link(type="text/plain", rel="author", href="/txt/humans.txt")
-		link(rel="stylesheet", href="http://fonts.googleapis.com/css?family=Droid+Sans")
 		link(rel='stylesheet', href='/css/style.css?v=234')
+		
 		script(type='text/javascript', src='/js/jquery.js')
 		script(type='text/javascript', src='/js/function.js?v=234')
-		script(type='text/javascript')
-			function woopraReady(tracker) {
-				tracker.setDomain('elihorne.com');
-				tracker.setIdleTimeout(300000);
-				tracker.track();
-				return false;
-			}
-
-			(function() {
-				var wsc = document.createElement('script');
-				wsc.src = document.location.protocol+'//static.woopra.com/js/woopra.js';
-				wsc.type = 'text/javascript';
-				wsc.async = true;
-				var ssc = document.getElementsByTagName('script')[0];
-				ssc.parentNode.insertBefore(wsc, ssc);
-			})();
-
 		script(type='text/javascript')
 			var _gaq = _gaq || [];
 			_gaq.push(['_setAccount', 'UA-452488-2']);
