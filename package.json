@@ -1,13 +1,27 @@
 {
-  "name": "elihorne",
-  "version": "0.0.3",
-  "engines": {
-    "node": ">= 0.8.7",
-    "npm": ">= 1.1.0"
+  "name": "elihorne-site",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
   },
   "dependencies": {
-    "express": "2.5.8",
-    "less": ">= 0.0.1",
-    "jade": ">= 0.0.1"
+    "react": "^19",
+    "react-dom": "^19",
+    "next": "^16"
+  },
+  "devDependencies": {
+    "typescript": "^5",
+    "@types/node": "^20",
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
+    "tailwindcss": "^3.4.1",
+    "postcss": "^8",
+    "autoprefixer": "^10.0.1",
+    "eslint": "^9",
+    "eslint-config-next": "^16"
   }
 }
